@@ -1,14 +1,22 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Montserrat, Poppins } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const montserrat = Montserrat({ 
+  subsets: ["latin"],
+  variable: '--font-montserrat',
+});
+
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Kache Digital Store',
+  description: 'Cyber-Fusion Overhaul',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -35,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
+      <body className="font-poppins antialiased bg-background text-foreground">
         {children}
         <Analytics />
       </body>

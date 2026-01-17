@@ -58,62 +58,83 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
+import { IntelligenceFeed } from "./IntelligenceFeed"
+import { FoundersDesk } from "./FoundersDesk"
+import { Toaster } from "sonner"
 
 // Sample data for apps
 const apps = [
   {
-    name: "PixelMaster",
+    name: "PixelMaster Pro",
     icon: <ImageIcon className="text-violet-500" />,
     description: "Advanced image editing and composition",
     category: "Creative",
     recent: true,
     new: false,
     progress: 100,
+    price: "$49.99/mo",
+    features: ["AI Integration", "4K Export", "Asset Library"],
+    fileType: ".PXDL"
   },
   {
-    name: "VectorPro",
+    name: "VectorPro Elite",
     icon: <Brush className="text-orange-500" />,
     description: "Professional vector graphics creation",
     category: "Creative",
     recent: true,
     new: false,
     progress: 100,
+    price: "$39.99/mo",
+    features: ["Bezier Precision", "Variable Fonts", "Color Mesh"],
+    fileType: ".VGX"
   },
   {
-    name: "VideoStudio",
+    name: "VideoStudio X",
     icon: <Video className="text-pink-500" />,
     description: "Cinematic video editing and production",
     category: "Video",
     recent: true,
     new: false,
     progress: 100,
+    price: "$59.99/mo",
+    features: ["8K Timeline", "Motion Blur", "Dolby Vision"],
+    fileType: ".KVID"
   },
   {
-    name: "MotionFX",
+    name: "MotionFX AI",
     icon: <Sparkles className="text-blue-500" />,
     description: "Stunning visual effects and animations",
     category: "Video",
     recent: false,
     new: false,
     progress: 100,
+    price: "$89.99/mo",
+    features: ["Particle Sim", "AI Tracking", "3D Camera"],
+    fileType: ".MFX"
   },
   {
-    name: "PageCraft",
+    name: "PageCraft Ultra",
     icon: <Layers className="text-red-500" />,
     description: "Professional page design and layout",
     category: "Creative",
     recent: false,
     new: false,
     progress: 100,
+    price: "$29.99/mo",
+    features: ["Auto Layout", "Print Specs", "Type Design"],
+    fileType: ".PGD"
   },
   {
-    name: "UXFlow",
+    name: "UXFlow Realtime",
     icon: <LayoutGrid className="text-fuchsia-500" />,
     description: "Intuitive user experience design",
     category: "Design",
     recent: false,
     new: true,
     progress: 85,
+    price: "$19.99/mo",
+    features: ["Live Preview", "Wireframing", "Handoff"],
+    fileType: ".UXF"
   },
   {
     name: "PhotoLab",
@@ -481,12 +502,12 @@ export function DesignaliCreative() {
         <div className="flex h-full flex-col border-r">
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center gap-3">
-              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 text-white">
+              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FF24E9] to-[#0CC0DF] text-white">
                 <Wand2 className="size-5" />
               </div>
               <div>
-                <h2 className="font-semibold">Designali</h2>
-                <p className="text-xs text-muted-foreground">Creative Suite</p>
+                <h2 className="font-montserrat font-bold tracking-tighter chromatic-aberration">KACHE DIGITAL</h2>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Cyber-Fusion Suite</p>
               </div>
             </div>
             <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
@@ -587,12 +608,12 @@ export function DesignaliCreative() {
         <div className="flex h-full flex-col">
           <div className="p-4">
             <div className="flex items-center gap-3">
-              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 text-white">
+              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FF24E9] to-[#0CC0DF] text-white">
                 <Wand2 className="size-5" />
               </div>
               <div>
-                <h2 className="font-semibold">Designali</h2>
-                <p className="text-xs text-muted-foreground">Creative Suite</p>
+                <h2 className="font-montserrat font-bold tracking-tighter chromatic-aberration">KACHE DIGITAL</h2>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Cyber-Fusion Suite</p>
               </div>
             </div>
           </div>
@@ -690,7 +711,7 @@ export function DesignaliCreative() {
             <PanelLeft className="h-5 w-5" />
           </Button>
           <div className="flex flex-1 items-center justify-between">
-            <h1 className="text-xl font-semibold">Designali Creative</h1>
+            <h1 className="text-xl font-bold font-montserrat tracking-tighter chromatic-aberration">KACHE DIGITAL CORE</h1>
             <div className="flex items-center gap-3">
               <TooltipProvider>
                 <Tooltip>
@@ -738,66 +759,71 @@ export function DesignaliCreative() {
           </div>
         </header>
 
-        <main className="flex-1 p-4 md:p-6">
-          <Tabs defaultValue="home" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <TabsList className="grid w-full max-w-[600px] grid-cols-5 rounded-2xl p-1">
-                <TabsTrigger value="home" className="rounded-xl data-[state=active]:rounded-xl">
-                  Home
-                </TabsTrigger>
-                <TabsTrigger value="apps" className="rounded-xl data-[state=active]:rounded-xl">
-                  Apps
-                </TabsTrigger>
-                <TabsTrigger value="files" className="rounded-xl data-[state=active]:rounded-xl">
-                  Files
-                </TabsTrigger>
-                <TabsTrigger value="projects" className="rounded-xl data-[state=active]:rounded-xl">
-                  Projects
-                </TabsTrigger>
-                <TabsTrigger value="learn" className="rounded-xl data-[state=active]:rounded-xl">
-                  Learn
-                </TabsTrigger>
-              </TabsList>
-              <div className="hidden md:flex gap-2">
-                <Button variant="outline" className="rounded-2xl">
-                  <Download className="mr-2 h-4 w-4" />
-                  Install App
-                </Button>
-                <Button className="rounded-2xl">
-                  <Plus className="mr-2 h-4 w-4" />
-                  New Project
-                </Button>
+        <div className="flex h-[calc(100vh-64px)] overflow-hidden">
+          <main className="flex-1 overflow-y-auto p-4 md:p-6 custom-scrollbar">
+            <Tabs defaultValue="home" value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <TabsList className="grid w-full max-w-[600px] grid-cols-5 rounded-2xl p-1">
+                  <TabsTrigger value="home" className="rounded-xl data-[state=active]:rounded-xl">
+                    Home
+                  </TabsTrigger>
+                  <TabsTrigger value="apps" className="rounded-xl data-[state=active]:rounded-xl">
+                    Apps
+                  </TabsTrigger>
+                  <TabsTrigger value="files" className="rounded-xl data-[state=active]:rounded-xl">
+                    Files
+                  </TabsTrigger>
+                  <TabsTrigger value="projects" className="rounded-xl data-[state=active]:rounded-xl">
+                    Projects
+                  </TabsTrigger>
+                  <TabsTrigger value="learn" className="rounded-xl data-[state=active]:rounded-xl">
+                    Learn
+                  </TabsTrigger>
+                </TabsList>
+                <div className="hidden md:flex gap-2">
+                  <Button variant="outline" className="rounded-2xl">
+                    <Download className="mr-2 h-4 w-4" />
+                    Install App
+                  </Button>
+                  <Button className="rounded-2xl">
+                    <Plus className="mr-2 h-4 w-4" />
+                    New Project
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-              >
-                <TabsContent value="home" className="space-y-8 mt-0">
-                  <section>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="overflow-hidden rounded-3xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 p-8 text-white"
-                    >
-                      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div className="space-y-4">
-                          <Badge className="bg-white/20 text-white hover:bg-white/30 rounded-xl">Premium</Badge>
-                          <h2 className="text-3xl font-bold">Welcome to DesignAli Creative Suite</h2>
-                          <p className="max-w-[600px] text-white/80">
-                            Unleash your creativity with our comprehensive suite of professional design tools and
-                            resources.
-                          </p>
-                          <div className="flex flex-wrap gap-3">
-                            <Button className="rounded-2xl bg-white text-indigo-700 hover:bg-white/90">
-                              Explore Plans
-                            </Button>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <TabsContent value="home" className="space-y-8 mt-0">
+                    <section>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="overflow-hidden rounded-3xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 p-8 text-white"
+                      >
+                        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                          <div className="space-y-4">
+                            <Badge className="bg-primary text-white border-none glow-pink rounded-xl">SYSTEM_ONLINE</Badge>
+                            <h2 className="text-3xl font-bold font-montserrat tracking-tight">Welcome to the Cyber-Fusion Hub</h2>
+                            <p className="max-w-[600px] text-white/80">
+                              Unleash your creativity with our comprehensive suite of professional design tools and
+                              resources.
+                            </p>
+                            <div className="flex flex-wrap gap-4">
+                              <Button className="rounded-2xl bg-primary text-white hover:bg-primary/90 glow-action">
+                                Initialize Sync
+                              </Button>
+                              <Button variant="outline" className="rounded-2xl border-accent/30 text-accent hover:bg-accent/10 glow-cyan">
+                                Network Status
+                              </Button>
+                            </div>
                             <Button
                               variant="outline"
                               className="rounded-2xl bg-transparent border-white text-white hover:bg-white/10"
@@ -819,84 +845,755 @@ export function DesignaliCreative() {
                             <div className="absolute inset-16 rounded-full bg-white/50" />
                           </motion.div>
                         </div>
-                      </div>
-                    </motion.div>
-                  </section>
+                      </motion.div>
+                    </section>
 
-                  <section className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-semibold">Recent Apps</h2>
-                      <Button variant="ghost" className="rounded-2xl">
-                        View All
-                      </Button>
+                    <FoundersDesk />
+
+                    <section className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-2xl font-semibold">Recent Apps</h2>
+                        <Button variant="ghost" className="rounded-2xl">
+                          View All
+                        </Button>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {apps
+                          .filter((app) => app.recent)
+                          .map((app: any) => (
+                            <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
+                              <Card className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-primary/50 transition-all duration-300">
+                                <CardHeader className="pb-2">
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#290747] border border-white/10 shadow-lg">
+                                      {app.icon}
+                                    </div>
+                                    <Badge variant="outline" className="rounded-xl border-accent/30 text-accent font-mono text-[10px]">
+                                      {app.fileType}
+                                    </Badge>
+                                  </div>
+                                </CardHeader>
+                                <CardContent className="pb-2">
+                                  <div className="flex items-center justify-between mb-1">
+                                    <CardTitle className="text-lg font-montserrat truncate">{app.name}</CardTitle>
+                                    <span className="text-sm font-bold text-primary">{app.price}</span>
+                                  </div>
+                                  <CardDescription className="line-clamp-2 text-xs mb-3">{app.description}</CardDescription>
+                                  <div className="flex flex-wrap gap-1 mt-2">
+                                    {app.features?.map((f: string) => (
+                                      <span key={f} className="text-[9px] px-2 py-0.5 bg-white/5 rounded-full border border-white/5 text-white/60">
+                                        {f}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </CardContent>
+                                <CardFooter>
+                                  <Button className="w-full rounded-2xl bg-primary hover:bg-primary/90 text-white font-montserrat font-bold glow-action">
+                                    INITIALIZE
+                                  </Button>
+                                </CardFooter>
+                              </Card>
+                            </motion.div>
+                          ))}
+                      </div>
+                    </section>
+
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                      <section className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <h2 className="text-2xl font-semibold">Recent Files</h2>
+                          <Button variant="ghost" className="rounded-2xl">
+                            View All
+                          </Button>
+                        </div>
+                        <div className="rounded-3xl border">
+                          <div className="grid grid-cols-1 divide-y">
+                            {recentFiles.slice(0, 4).map((file) => (
+                              <motion.div
+                                key={file.name}
+                                whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+                                className="flex items-center justify-between p-4"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-muted">
+                                    {file.icon}
+                                  </div>
+                                  <div>
+                                    <p className="font-medium">{file.name}</p>
+                                    <p className="text-sm text-muted-foreground">
+                                      {file.app} • {file.modified}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  {file.shared && (
+                                    <Badge variant="outline" className="rounded-xl">
+                                      <Users className="mr-1 h-3 w-3" />
+                                      {file.collaborators}
+                                    </Badge>
+                                  )}
+                                  <Button variant="ghost" size="sm" className="rounded-xl">
+                                    Open
+                                  </Button>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      </section>
+
+                      <section className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <h2 className="text-2xl font-semibold">Active Projects</h2>
+                          <Button variant="ghost" className="rounded-2xl">
+                            View All
+                          </Button>
+                        </div>
+                        <div className="rounded-3xl border">
+                          <div className="grid grid-cols-1 divide-y">
+                            {projects.slice(0, 3).map((project) => (
+                              <motion.div
+                                key={project.name}
+                                whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+                                className="p-4"
+                              >
+                                <div className="flex items-center justify-between mb-2">
+                                  <h3 className="font-medium">{project.name}</h3>
+                                  <Badge variant="outline" className="rounded-xl">
+                                    Due {project.dueDate}
+                                  </Badge>
+                                </div>
+                                <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
+                                <div className="space-y-2">
+                                  <div className="flex items-center justify-between text-sm">
+                                    <span>Progress</span>
+                                    <span>{project.progress}%</span>
+                                  </div>
+                                  <Progress value={project.progress} className="h-2 rounded-xl" />
+                                </div>
+                                <div className="flex items-center justify-between mt-3 text-sm text-muted-foreground">
+                                  <div className="flex items-center">
+                                    <Users className="mr-1 h-4 w-4" />
+                                    {project.members} members
+                                  </div>
+                                  <div className="flex items-center">
+                                    <FileText className="mr-1 h-4 w-4" />
+                                    {project.files} files
+                                  </div>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      </section>
                     </div>
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                      {apps
-                        .filter((app) => app.recent)
-                        .map((app) => (
+
+                    <section className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-2xl font-semibold">Community Highlights</h2>
+                        <Button variant="ghost" className="rounded-2xl">
+                          Explore
+                        </Button>
+                      </div>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        {communityPosts.map((post) => (
+                          <motion.div key={post.title} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
+                            <Card className="overflow-hidden rounded-3xl">
+                              <div className="aspect-[4/3] overflow-hidden bg-muted">
+                                <img
+                                  src={post.image || "/placeholder.svg"}
+                                  alt={post.title}
+                                  className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                                />
+                              </div>
+                              <CardContent className="p-4">
+                                <h3 className="font-semibold">{post.title}</h3>
+                                <p className="text-sm text-muted-foreground">by {post.author}</p>
+                                <div className="mt-2 flex items-center justify-between text-sm">
+                                  <div className="flex items-center gap-2">
+                                    <Heart className="h-4 w-4 text-red-500" />
+                                    {post.likes}
+                                    <MessageSquare className="ml-2 h-4 w-4 text-blue-500" />
+                                    {post.comments}
+                                  </div>
+                                  <span className="text-muted-foreground">{post.time}</span>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </section>
+                  </TabsContent>
+
+                  <TabsContent value="apps" className="space-y-8 mt-0">
+                    <section>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="overflow-hidden rounded-3xl bg-gradient-to-r from-pink-600 via-red-600 to-orange-600 p-8 text-white"
+                      >
+                        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                          <div className="space-y-2">
+                            <h2 className="text-3xl font-bold">Creative Apps Collection</h2>
+                            <p className="max-w-[600px] text-white/80">
+                              Discover our full suite of professional design and creative applications.
+                            </p>
+                          </div>
+                          <Button className="w-fit rounded-2xl bg-white text-red-700 hover:bg-white/90">
+                            <Download className="mr-2 h-4 w-4" />
+                            Install Desktop App
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </section>
+
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      <Button variant="outline" className="rounded-2xl">
+                        All Categories
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        Creative
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        Video
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        Web
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        3D
+                      </Button>
+                      <div className="flex-1"></div>
+                      <div className="relative w-full md:w-auto mt-3 md:mt-0">
+                        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          type="search"
+                          placeholder="Search apps..."
+                          className="w-full rounded-2xl pl-9 md:w-[200px]"
+                        />
+                      </div>
+                    </div>
+
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold">New Releases</h2>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        {apps
+                          .filter((app) => app.new)
+                          .map((app) => (
+                            <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
+                              <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
+                                <CardHeader className="pb-2">
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
+                                      {app.icon}
+                                    </div>
+                                    <Badge className="rounded-xl bg-amber-500">New</Badge>
+                                  </div>
+                                </CardHeader>
+                                <CardContent className="pb-2">
+                                  <CardTitle className="text-lg">{app.name}</CardTitle>
+                                  <CardDescription>{app.description}</CardDescription>
+                                  <div className="mt-2">
+                                    <div className="flex items-center justify-between text-sm">
+                                      <span>Installation</span>
+                                      <span>{app.progress}%</span>
+                                    </div>
+                                    <Progress value={app.progress} className="h-2 mt-1 rounded-xl" />
+                                  </div>
+                                </CardContent>
+                                <CardFooter>
+                                  <Button variant="secondary" className="w-full rounded-2xl">
+                                    {app.progress < 100 ? "Continue Install" : "Open"}
+                                  </Button>
+                                </CardFooter>
+                              </Card>
+                            </motion.div>
+                          ))}
+                      </div>
+                    </section>
+
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold">All Apps</h2>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        {apps.map((app) => (
                           <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                            <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
+                            <Card className="overflow-hidden rounded-3xl border hover:border-primary/50 transition-all duration-300">
                               <CardHeader className="pb-2">
                                 <div className="flex items-center justify-between">
                                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
                                     {app.icon}
                                   </div>
-                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-2xl">
-                                    <Star className="h-4 w-4" />
-                                  </Button>
+                                  <Badge variant="outline" className="rounded-xl">
+                                    {app.category}
+                                  </Badge>
                                 </div>
                               </CardHeader>
                               <CardContent className="pb-2">
                                 <CardTitle className="text-lg">{app.name}</CardTitle>
                                 <CardDescription>{app.description}</CardDescription>
                               </CardContent>
-                              <CardFooter>
-                                <Button variant="secondary" className="w-full rounded-2xl">
-                                  Open
+                              <CardFooter className="flex gap-2">
+                                <Button variant="secondary" className="flex-1 rounded-2xl">
+                                  {app.progress < 100 ? "Install" : "Open"}
+                                </Button>
+                                <Button variant="outline" size="icon" className="rounded-2xl">
+                                  <Star className="h-4 w-4" />
                                 </Button>
                               </CardFooter>
                             </Card>
                           </motion.div>
                         ))}
-                    </div>
-                  </section>
+                      </div>
+                    </section>
+                  </TabsContent>
 
-                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                  <TabsContent value="files" className="space-y-8 mt-0">
+                    <section>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="overflow-hidden rounded-3xl bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 p-8 text-white"
+                      >
+                        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                          <div className="space-y-2">
+                            <h2 className="text-3xl font-bold">Your Creative Files</h2>
+                            <p className="max-w-[600px] text-white/80">
+                              Access, manage, and share all your design files in one place.
+                            </p>
+                          </div>
+                          <div className="flex flex-wrap gap-3">
+                            <Button className="rounded-2xl bg-white/20 backdrop-blur-md hover:bg-white/30">
+                              <Cloud className="mr-2 h-4 w-4" />
+                              Cloud Storage
+                            </Button>
+                            <Button className="rounded-2xl bg-white text-blue-700 hover:bg-white/90">
+                              <Plus className="mr-2 h-4 w-4" />
+                              Upload Files
+                            </Button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </section>
+
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      <Button variant="outline" className="rounded-2xl">
+                        <FileText className="mr-2 h-4 w-4" />
+                        All Files
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Clock className="mr-2 h-4 w-4" />
+                        Recent
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Users className="mr-2 h-4 w-4" />
+                        Shared
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Star className="mr-2 h-4 w-4" />
+                        Favorites
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Trash className="mr-2 h-4 w-4" />
+                        Trash
+                      </Button>
+                      <div className="flex-1"></div>
+                      <div className="relative w-full md:w-auto mt-3 md:mt-0">
+                        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          type="search"
+                          placeholder="Search files..."
+                          className="w-full rounded-2xl pl-9 md:w-[200px]"
+                        />
+                      </div>
+                    </div>
+
                     <section className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <h2 className="text-2xl font-semibold">Recent Files</h2>
-                        <Button variant="ghost" className="rounded-2xl">
-                          View All
-                        </Button>
+                        <h2 className="text-2xl font-semibold">All Files</h2>
+                        <div className="flex gap-2">
+                          <Button variant="outline" size="sm" className="rounded-2xl">
+                            <PanelLeft className="mr-2 h-4 w-4" />
+                            Filter
+                          </Button>
+                          <Button variant="outline" size="sm" className="rounded-2xl">
+                            <ArrowUpDown className="mr-2 h-4 w-4" />
+                            Sort
+                          </Button>
+                        </div>
                       </div>
-                      <div className="rounded-3xl border">
-                        <div className="grid grid-cols-1 divide-y">
-                          {recentFiles.slice(0, 4).map((file) => (
+
+                      <div className="rounded-3xl border overflow-hidden">
+                        <div className="bg-muted/50 p-3 hidden md:grid md:grid-cols-12 text-sm font-medium">
+                          <div className="col-span-6">Name</div>
+                          <div className="col-span-2">App</div>
+                          <div className="col-span-2">Size</div>
+                          <div className="col-span-2">Modified</div>
+                        </div>
+                        <div className="divide-y">
+                          {recentFiles.map((file) => (
                             <motion.div
                               key={file.name}
                               whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                              className="flex items-center justify-between p-4"
+                              className="p-3 md:grid md:grid-cols-12 items-center flex flex-col md:flex-row gap-3 md:gap-0"
                             >
-                              <div className="flex items-center gap-3">
+                              <div className="col-span-6 flex items-center gap-3 w-full md:w-auto">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-muted">
                                   {file.icon}
                                 </div>
                                 <div>
                                   <p className="font-medium">{file.name}</p>
-                                  <p className="text-sm text-muted-foreground">
-                                    {file.app} • {file.modified}
-                                  </p>
+                                  {file.shared && (
+                                    <div className="flex items-center text-xs text-muted-foreground">
+                                      <Users className="mr-1 h-3 w-3" />
+                                      Shared with {file.collaborators} people
+                                    </div>
+                                  )}
                                 </div>
                               </div>
-                              <div className="flex items-center gap-2">
-                                {file.shared && (
+                              <div className="col-span-2 text-sm md:text-base">{file.app}</div>
+                              <div className="col-span-2 text-sm md:text-base">{file.size}</div>
+                              <div className="col-span-2 flex items-center justify-between w-full md:w-auto">
+                                <span className="text-sm md:text-base">{file.modified}</span>
+                                <div className="flex gap-1">
+                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-xl">
+                                    <Share2 className="h-4 w-4" />
+                                  </Button>
+                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-xl">
+                                    <MoreHorizontal className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </section>
+                  </TabsContent>
+
+                  <TabsContent value="projects" className="space-y-8 mt-0">
+                    <section>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="overflow-hidden rounded-3xl bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 p-8 text-white"
+                      >
+                        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                          <div className="space-y-2">
+                            <h2 className="text-3xl font-bold">Project Management</h2>
+                            <p className="max-w-[600px] text-white/80">
+                              Organize your creative work into projects and collaborate with your team.
+                            </p>
+                          </div>
+                          <Button className="w-fit rounded-2xl bg-white text-indigo-700 hover:bg-white/90">
+                            <Plus className="mr-2 h-4 w-4" />
+                            New Project
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </section>
+
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      <Button variant="outline" className="rounded-2xl">
+                        <Layers className="mr-2 h-4 w-4" />
+                        All Projects
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Clock className="mr-2 h-4 w-4" />
+                        Recent
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Users className="mr-2 h-4 w-4" />
+                        Shared
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Archive className="mr-2 h-4 w-4" />
+                        Archived
+                      </Button>
+                      <div className="flex-1"></div>
+                      <div className="relative w-full md:w-auto mt-3 md:mt-0">
+                        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          type="search"
+                          placeholder="Search projects..."
+                          className="w-full rounded-2xl pl-9 md:w-[200px]"
+                        />
+                      </div>
+                    </div>
+
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold">Active Projects</h2>
+                      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+                        {projects.map((project) => (
+                          <motion.div key={project.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
+                            <Card className="overflow-hidden rounded-3xl border hover:border-primary/50 transition-all duration-300">
+                              <CardHeader>
+                                <div className="flex items-center justify-between">
+                                  <CardTitle>{project.name}</CardTitle>
                                   <Badge variant="outline" className="rounded-xl">
-                                    <Users className="mr-1 h-3 w-3" />
-                                    {file.collaborators}
+                                    Due {project.dueDate}
                                   </Badge>
-                                )}
+                                </div>
+                                <CardDescription>{project.description}</CardDescription>
+                              </CardHeader>
+                              <CardContent className="space-y-4">
+                                <div className="space-y-2">
+                                  <div className="flex items-center justify-between text-sm">
+                                    <span>Progress</span>
+                                    <span>{project.progress}%</span>
+                                  </div>
+                                  <Progress value={project.progress} className="h-2 rounded-xl" />
+                                </div>
+                                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                                  <div className="flex items-center">
+                                    <Users className="mr-1 h-4 w-4" />
+                                    {project.members} members
+                                  </div>
+                                  <div className="flex items-center">
+                                    <FileText className="mr-1 h-4 w-4" />
+                                    {project.files} files
+                                  </div>
+                                </div>
+                              </CardContent>
+                              <CardFooter className="flex gap-2">
+                                <Button variant="secondary" className="flex-1 rounded-2xl">
+                                  Open Project
+                                </Button>
+                                <Button variant="outline" size="icon" className="rounded-2xl">
+                                  <Share2 className="h-4 w-4" />
+                                </Button>
+                              </CardFooter>
+                            </Card>
+                          </motion.div>
+                        ))}
+                        <motion.div whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
+                          <Card className="flex h-full flex-col items-center justify-center rounded-3xl border border-dashed p-8 hover:border-primary/50 transition-all duration-300">
+                            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                              <Plus className="h-6 w-6" />
+                            </div>
+                            <h3 className="text-lg font-medium">Create New Project</h3>
+                            <p className="mb-4 text-center text-sm text-muted-foreground">
+                              Start a new creative project from scratch or use a template
+                            </p>
+                            <Button className="rounded-2xl">New Project</Button>
+                          </Card>
+                        </motion.div>
+                      </div>
+                    </section>
+
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold">Project Templates</h2>
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        <Card className="overflow-hidden rounded-3xl">
+                          <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 p-6 text-white">
+                            <h3 className="text-lg font-medium">Brand Identity</h3>
+                            <p className="text-sm text-white/80">Complete brand design package</p>
+                          </div>
+                          <CardFooter className="flex justify-between p-4">
+                            <Badge variant="outline" className="rounded-xl">
+                              Popular
+                            </Badge>
+                            <Button variant="ghost" size="sm" className="rounded-xl">
+                              Use Template
+                            </Button>
+                          </CardFooter>
+                        </Card>
+                        <Card className="overflow-hidden rounded-3xl">
+                          <div className="aspect-video bg-gradient-to-br from-amber-500 to-red-600 p-6 text-white">
+                            <h3 className="text-lg font-medium">Marketing Campaign</h3>
+                            <p className="text-sm text-white/80">Multi-channel marketing assets</p>
+                          </div>
+                          <CardFooter className="flex justify-between p-4">
+                            <Badge variant="outline" className="rounded-xl">
+                              New
+                            </Badge>
+                            <Button variant="ghost" size="sm" className="rounded-xl">
+                              Use Template
+                            </Button>
+                          </CardFooter>
+                        </Card>
+                        <Card className="overflow-hidden rounded-3xl">
+                          <div className="aspect-video bg-gradient-to-br from-green-500 to-teal-600 p-6 text-white">
+                            <h3 className="text-lg font-medium">Website Redesign</h3>
+                            <p className="text-sm text-white/80">Complete website design workflow</p>
+                          </div>
+                          <CardFooter className="flex justify-between p-4">
+                            <Badge variant="outline" className="rounded-xl">
+                              Featured
+                            </Badge>
+                            <Button variant="ghost" size="sm" className="rounded-xl">
+                              Use Template
+                            </Button>
+                          </CardFooter>
+                        </Card>
+                        <Card className="overflow-hidden rounded-3xl">
+                          <div className="aspect-video bg-gradient-to-br from-pink-500 to-rose-600 p-6 text-white">
+                            <h3 className="text-lg font-medium">Product Launch</h3>
+                            <p className="text-sm text-white/80">Product launch campaign assets</p>
+                          </div>
+                          <CardFooter className="flex justify-between p-4">
+                            <Badge variant="outline" className="rounded-xl">
+                              Popular
+                            </Badge>
+                            <Button variant="ghost" size="sm" className="rounded-xl">
+                              Use Template
+                            </Button>
+                          </CardFooter>
+                        </Card>
+                      </div>
+                    </section>
+                  </TabsContent>
+
+                  <TabsContent value="learn" className="space-y-8 mt-0">
+                    <section>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="overflow-hidden rounded-3xl bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 p-8 text-white"
+                      >
+                        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                          <div className="space-y-2">
+                            <h2 className="text-3xl font-bold">Learn & Grow</h2>
+                            <p className="max-w-[600px] text-white/80">
+                              Expand your creative skills with tutorials, courses, and resources.
+                            </p>
+                          </div>
+                          <Button className="w-fit rounded-2xl bg-white text-emerald-700 hover:bg-white/90">
+                            <Crown className="mr-2 h-4 w-4" />
+                            Upgrade to Pro
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </section>
+
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      <Button variant="outline" className="rounded-2xl">
+                        <Play className="mr-2 h-4 w-4" />
+                        All Tutorials
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Courses
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Lightbulb className="mr-2 h-4 w-4" />
+                        Tips & Tricks
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <TrendingUp className="mr-2 h-4 w-4" />
+                        Trending
+                      </Button>
+                      <Button variant="outline" className="rounded-2xl">
+                        <Bookmark className="mr-2 h-4 w-4" />
+                        Saved
+                      </Button>
+                      <div className="flex-1"></div>
+                      <div className="relative w-full md:w-auto mt-3 md:mt-0">
+                        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          type="search"
+                          placeholder="Search tutorials..."
+                          className="w-full rounded-2xl pl-9 md:w-[200px]"
+                        />
+                      </div>
+                    </div>
+
+                    <section className="space-y-4">
+                      <h2 className="text-2xl font-semibold">Featured Tutorials</h2>
+                      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {tutorials.slice(0, 3).map((tutorial) => (
+                          <motion.div key={tutorial.title} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
+                            <Card className="overflow-hidden rounded-3xl">
+                              <div className="aspect-video overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 relative">
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <Button size="icon" variant="secondary" className="h-14 w-14 rounded-full">
+                                    <Play className="h-6 w-6" />
+                                  </Button>
+                                </div>
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
+                                  <Badge className="bg-white/20 text-white hover:bg-white/30 rounded-xl">
+                                    {tutorial.category}
+                                  </Badge>
+                                  <h3 className="mt-2 text-lg font-medium">{tutorial.title}</h3>
+                                </div>
+                              </div>
+                              <CardContent className="p-4">
+                                <p className="text-sm text-muted-foreground">{tutorial.description}</p>
+                                <div className="mt-4 flex items-center justify-between">
+                                  <div className="flex items-center gap-2">
+                                    <Avatar className="h-6 w-6">
+                                      <AvatarFallback>{tutorial.instructor.charAt(0)}</AvatarFallback>
+                                    </Avatar>
+                                    <span className="text-sm">{tutorial.instructor}</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                    <Clock className="h-4 w-4" />
+                                    {tutorial.duration}
+                                  </div>
+                                </div>
+                              </CardContent>
+                              <CardFooter className="flex items-center justify-between border-t p-4">
+                                <Badge variant="outline" className="rounded-xl">
+                                  {tutorial.level}
+                                </Badge>
+                                <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                                  <Eye className="h-4 w-4" />
+                                  {tutorial.views} views
+                                </div>
+                              </CardFooter>
+                            </Card>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </section>
+
+                    <section className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-2xl font-semibold">Popular Courses</h2>
+                        <Button variant="ghost" className="rounded-2xl">
+                          View All
+                        </Button>
+                      </div>
+                      <div className="rounded-3xl border overflow-hidden">
+                        <div className="divide-y">
+                          {tutorials.slice(3, 5).map((tutorial) => (
+                            <motion.div
+                              key={tutorial.title}
+                              whileHover={{ scale: 1.02, y: -5 }}
+                              whileTap={{ scale: 0.98 }}
+                              className="p-4 flex flex-col md:flex-row gap-3"
+                            >
+                              <div className="flex-shrink-0">
+                                <div className="relative h-20 w-20 overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600">
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <Play className="h-8 w-8 text-white" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex-1">
+                                <h3 className="font-medium">{tutorial.title}</h3>
+                                <p className="text-sm text-muted-foreground">{tutorial.description}</p>
+                                <div className="mt-2 flex flex-wrap items-center gap-3">
+                                  <Badge variant="outline" className="rounded-xl">
+                                    {tutorial.level}
+                                  </Badge>
+                                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                                    <Clock className="h-3 w-3" />
+                                    {tutorial.duration}
+                                  </div>
+                                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                                    <Eye className="h-3 w-3" />
+                                    {tutorial.views} views
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex items-center">
                                 <Button variant="ghost" size="sm" className="rounded-xl">
-                                  Open
+                                  Watch Now
                                 </Button>
                               </div>
                             </motion.div>
@@ -906,752 +1603,97 @@ export function DesignaliCreative() {
                     </section>
 
                     <section className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <h2 className="text-2xl font-semibold">Active Projects</h2>
-                        <Button variant="ghost" className="rounded-2xl">
-                          View All
-                        </Button>
-                      </div>
-                      <div className="rounded-3xl border">
-                        <div className="grid grid-cols-1 divide-y">
-                          {projects.slice(0, 3).map((project) => (
-                            <motion.div
-                              key={project.name}
-                              whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                              className="p-4"
-                            >
-                              <div className="flex items-center justify-between mb-2">
-                                <h3 className="font-medium">{project.name}</h3>
-                                <Badge variant="outline" className="rounded-xl">
-                                  Due {project.dueDate}
-                                </Badge>
+                      <h2 className="text-2xl font-semibold">Learning Paths</h2>
+                      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+                        <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
+                          <CardHeader className="pb-2">
+                            <div className="flex items-center justify-between">
+                              <Badge className="rounded-xl bg-blue-500">Beginner</Badge>
+                              <Award className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <CardTitle className="mt-2">UI/UX Design Fundamentals</CardTitle>
+                            <CardDescription>Master the basics of user interface and experience design</CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between text-sm">
+                                <span>8 courses • 24 hours</span>
+                                <span>4.8 ★</span>
                               </div>
-                              <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
-                              <div className="space-y-2">
-                                <div className="flex items-center justify-between text-sm">
-                                  <span>Progress</span>
-                                  <span>{project.progress}%</span>
-                                </div>
-                                <Progress value={project.progress} className="h-2 rounded-xl" />
+                              <Progress value={30} className="h-2 rounded-xl" />
+                              <p className="text-xs text-muted-foreground">30% completed</p>
+                            </div>
+                          </CardContent>
+                          <CardFooter>
+                            <Button variant="secondary" className="w-full rounded-2xl">
+                              Continue Learning
+                            </Button>
+                          </CardFooter>
+                        </Card>
+
+                        <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
+                          <CardHeader className="pb-2">
+                            <div className="flex items-center justify-between">
+                              <Badge className="rounded-xl bg-amber-500">Intermediate</Badge>
+                              <Award className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <CardTitle className="mt-2">Digital Illustration Mastery</CardTitle>
+                            <CardDescription>Create stunning digital artwork and illustrations</CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between text-sm">
+                                <span>12 courses • 36 hours</span>
+                                <span>4.9 ★</span>
                               </div>
-                              <div className="flex items-center justify-between mt-3 text-sm text-muted-foreground">
-                                <div className="flex items-center">
-                                  <Users className="mr-1 h-4 w-4" />
-                                  {project.members} members
-                                </div>
-                                <div className="flex items-center">
-                                  <FileText className="mr-1 h-4 w-4" />
-                                  {project.files} files
-                                </div>
+                              <Progress value={0} className="h-2 rounded-xl" />
+                              <p className="text-xs text-muted-foreground">Not started</p>
+                            </div>
+                          </CardContent>
+                          <CardFooter>
+                            <Button variant="secondary" className="w-full rounded-2xl">
+                              Start Learning
+                            </Button>
+                          </CardFooter>
+                        </Card>
+
+                        <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
+                          <CardHeader className="pb-2">
+                            <div className="flex items-center justify-between">
+                              <Badge className="rounded-xl bg-red-500">Advanced</Badge>
+                              <Award className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <CardTitle className="mt-2">Motion Graphics & Animation</CardTitle>
+                            <CardDescription>Create professional motion graphics and animations</CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between text-sm">
+                                <span>10 courses • 30 hours</span>
+                                <span>4.7 ★</span>
                               </div>
-                            </motion.div>
-                          ))}
-                        </div>
+                              <Progress value={0} className="h-2 rounded-xl" />
+                              <p className="text-xs text-muted-foreground">Not started</p>
+                            </div>
+                          </CardContent>
+                          <CardFooter>
+                            <Button variant="secondary" className="w-full rounded-2xl">
+                              Start Learning
+                            </Button>
+                          </CardFooter>
+                        </Card>
                       </div>
                     </section>
-                  </div>
-
-                  <section className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-semibold">Community Highlights</h2>
-                      <Button variant="ghost" className="rounded-2xl">
-                        Explore
-                      </Button>
-                    </div>
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                      {communityPosts.map((post) => (
-                        <motion.div key={post.title} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                          <Card className="overflow-hidden rounded-3xl">
-                            <div className="aspect-[4/3] overflow-hidden bg-muted">
-                              <img
-                                src={post.image || "/placeholder.svg"}
-                                alt={post.title}
-                                className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                              />
-                            </div>
-                            <CardContent className="p-4">
-                              <h3 className="font-semibold">{post.title}</h3>
-                              <p className="text-sm text-muted-foreground">by {post.author}</p>
-                              <div className="mt-2 flex items-center justify-between text-sm">
-                                <div className="flex items-center gap-2">
-                                  <Heart className="h-4 w-4 text-red-500" />
-                                  {post.likes}
-                                  <MessageSquare className="ml-2 h-4 w-4 text-blue-500" />
-                                  {post.comments}
-                                </div>
-                                <span className="text-muted-foreground">{post.time}</span>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </section>
-                </TabsContent>
-
-                <TabsContent value="apps" className="space-y-8 mt-0">
-                  <section>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="overflow-hidden rounded-3xl bg-gradient-to-r from-pink-600 via-red-600 to-orange-600 p-8 text-white"
-                    >
-                      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                        <div className="space-y-2">
-                          <h2 className="text-3xl font-bold">Creative Apps Collection</h2>
-                          <p className="max-w-[600px] text-white/80">
-                            Discover our full suite of professional design and creative applications.
-                          </p>
-                        </div>
-                        <Button className="w-fit rounded-2xl bg-white text-red-700 hover:bg-white/90">
-                          <Download className="mr-2 h-4 w-4" />
-                          Install Desktop App
-                        </Button>
-                      </div>
-                    </motion.div>
-                  </section>
-
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <Button variant="outline" className="rounded-2xl">
-                      All Categories
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      Creative
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      Video
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      Web
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      3D
-                    </Button>
-                    <div className="flex-1"></div>
-                    <div className="relative w-full md:w-auto mt-3 md:mt-0">
-                      <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="search"
-                        placeholder="Search apps..."
-                        className="w-full rounded-2xl pl-9 md:w-[200px]"
-                      />
-                    </div>
-                  </div>
-
-                  <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold">New Releases</h2>
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                      {apps
-                        .filter((app) => app.new)
-                        .map((app) => (
-                          <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                            <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
-                              <CardHeader className="pb-2">
-                                <div className="flex items-center justify-between">
-                                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
-                                    {app.icon}
-                                  </div>
-                                  <Badge className="rounded-xl bg-amber-500">New</Badge>
-                                </div>
-                              </CardHeader>
-                              <CardContent className="pb-2">
-                                <CardTitle className="text-lg">{app.name}</CardTitle>
-                                <CardDescription>{app.description}</CardDescription>
-                                <div className="mt-2">
-                                  <div className="flex items-center justify-between text-sm">
-                                    <span>Installation</span>
-                                    <span>{app.progress}%</span>
-                                  </div>
-                                  <Progress value={app.progress} className="h-2 mt-1 rounded-xl" />
-                                </div>
-                              </CardContent>
-                              <CardFooter>
-                                <Button variant="secondary" className="w-full rounded-2xl">
-                                  {app.progress < 100 ? "Continue Install" : "Open"}
-                                </Button>
-                              </CardFooter>
-                            </Card>
-                          </motion.div>
-                        ))}
-                    </div>
-                  </section>
-
-                  <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold">All Apps</h2>
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                      {apps.map((app) => (
-                        <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                          <Card className="overflow-hidden rounded-3xl border hover:border-primary/50 transition-all duration-300">
-                            <CardHeader className="pb-2">
-                              <div className="flex items-center justify-between">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
-                                  {app.icon}
-                                </div>
-                                <Badge variant="outline" className="rounded-xl">
-                                  {app.category}
-                                </Badge>
-                              </div>
-                            </CardHeader>
-                            <CardContent className="pb-2">
-                              <CardTitle className="text-lg">{app.name}</CardTitle>
-                              <CardDescription>{app.description}</CardDescription>
-                            </CardContent>
-                            <CardFooter className="flex gap-2">
-                              <Button variant="secondary" className="flex-1 rounded-2xl">
-                                {app.progress < 100 ? "Install" : "Open"}
-                              </Button>
-                              <Button variant="outline" size="icon" className="rounded-2xl">
-                                <Star className="h-4 w-4" />
-                              </Button>
-                            </CardFooter>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </section>
-                </TabsContent>
-
-                <TabsContent value="files" className="space-y-8 mt-0">
-                  <section>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="overflow-hidden rounded-3xl bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 p-8 text-white"
-                    >
-                      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                        <div className="space-y-2">
-                          <h2 className="text-3xl font-bold">Your Creative Files</h2>
-                          <p className="max-w-[600px] text-white/80">
-                            Access, manage, and share all your design files in one place.
-                          </p>
-                        </div>
-                        <div className="flex flex-wrap gap-3">
-                          <Button className="rounded-2xl bg-white/20 backdrop-blur-md hover:bg-white/30">
-                            <Cloud className="mr-2 h-4 w-4" />
-                            Cloud Storage
-                          </Button>
-                          <Button className="rounded-2xl bg-white text-blue-700 hover:bg-white/90">
-                            <Plus className="mr-2 h-4 w-4" />
-                            Upload Files
-                          </Button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </section>
-
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <Button variant="outline" className="rounded-2xl">
-                      <FileText className="mr-2 h-4 w-4" />
-                      All Files
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Clock className="mr-2 h-4 w-4" />
-                      Recent
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Users className="mr-2 h-4 w-4" />
-                      Shared
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Star className="mr-2 h-4 w-4" />
-                      Favorites
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Trash className="mr-2 h-4 w-4" />
-                      Trash
-                    </Button>
-                    <div className="flex-1"></div>
-                    <div className="relative w-full md:w-auto mt-3 md:mt-0">
-                      <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="search"
-                        placeholder="Search files..."
-                        className="w-full rounded-2xl pl-9 md:w-[200px]"
-                      />
-                    </div>
-                  </div>
-
-                  <section className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-semibold">All Files</h2>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="rounded-2xl">
-                          <PanelLeft className="mr-2 h-4 w-4" />
-                          Filter
-                        </Button>
-                        <Button variant="outline" size="sm" className="rounded-2xl">
-                          <ArrowUpDown className="mr-2 h-4 w-4" />
-                          Sort
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="rounded-3xl border overflow-hidden">
-                      <div className="bg-muted/50 p-3 hidden md:grid md:grid-cols-12 text-sm font-medium">
-                        <div className="col-span-6">Name</div>
-                        <div className="col-span-2">App</div>
-                        <div className="col-span-2">Size</div>
-                        <div className="col-span-2">Modified</div>
-                      </div>
-                      <div className="divide-y">
-                        {recentFiles.map((file) => (
-                          <motion.div
-                            key={file.name}
-                            whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                            className="p-3 md:grid md:grid-cols-12 items-center flex flex-col md:flex-row gap-3 md:gap-0"
-                          >
-                            <div className="col-span-6 flex items-center gap-3 w-full md:w-auto">
-                              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-muted">
-                                {file.icon}
-                              </div>
-                              <div>
-                                <p className="font-medium">{file.name}</p>
-                                {file.shared && (
-                                  <div className="flex items-center text-xs text-muted-foreground">
-                                    <Users className="mr-1 h-3 w-3" />
-                                    Shared with {file.collaborators} people
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                            <div className="col-span-2 text-sm md:text-base">{file.app}</div>
-                            <div className="col-span-2 text-sm md:text-base">{file.size}</div>
-                            <div className="col-span-2 flex items-center justify-between w-full md:w-auto">
-                              <span className="text-sm md:text-base">{file.modified}</span>
-                              <div className="flex gap-1">
-                                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-xl">
-                                  <Share2 className="h-4 w-4" />
-                                </Button>
-                                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-xl">
-                                  <MoreHorizontal className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </section>
-                </TabsContent>
-
-                <TabsContent value="projects" className="space-y-8 mt-0">
-                  <section>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="overflow-hidden rounded-3xl bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 p-8 text-white"
-                    >
-                      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                        <div className="space-y-2">
-                          <h2 className="text-3xl font-bold">Project Management</h2>
-                          <p className="max-w-[600px] text-white/80">
-                            Organize your creative work into projects and collaborate with your team.
-                          </p>
-                        </div>
-                        <Button className="w-fit rounded-2xl bg-white text-indigo-700 hover:bg-white/90">
-                          <Plus className="mr-2 h-4 w-4" />
-                          New Project
-                        </Button>
-                      </div>
-                    </motion.div>
-                  </section>
-
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <Button variant="outline" className="rounded-2xl">
-                      <Layers className="mr-2 h-4 w-4" />
-                      All Projects
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Clock className="mr-2 h-4 w-4" />
-                      Recent
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Users className="mr-2 h-4 w-4" />
-                      Shared
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Archive className="mr-2 h-4 w-4" />
-                      Archived
-                    </Button>
-                    <div className="flex-1"></div>
-                    <div className="relative w-full md:w-auto mt-3 md:mt-0">
-                      <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="search"
-                        placeholder="Search projects..."
-                        className="w-full rounded-2xl pl-9 md:w-[200px]"
-                      />
-                    </div>
-                  </div>
-
-                  <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold">Active Projects</h2>
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
-                      {projects.map((project) => (
-                        <motion.div key={project.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                          <Card className="overflow-hidden rounded-3xl border hover:border-primary/50 transition-all duration-300">
-                            <CardHeader>
-                              <div className="flex items-center justify-between">
-                                <CardTitle>{project.name}</CardTitle>
-                                <Badge variant="outline" className="rounded-xl">
-                                  Due {project.dueDate}
-                                </Badge>
-                              </div>
-                              <CardDescription>{project.description}</CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                              <div className="space-y-2">
-                                <div className="flex items-center justify-between text-sm">
-                                  <span>Progress</span>
-                                  <span>{project.progress}%</span>
-                                </div>
-                                <Progress value={project.progress} className="h-2 rounded-xl" />
-                              </div>
-                              <div className="flex items-center justify-between text-sm text-muted-foreground">
-                                <div className="flex items-center">
-                                  <Users className="mr-1 h-4 w-4" />
-                                  {project.members} members
-                                </div>
-                                <div className="flex items-center">
-                                  <FileText className="mr-1 h-4 w-4" />
-                                  {project.files} files
-                                </div>
-                              </div>
-                            </CardContent>
-                            <CardFooter className="flex gap-2">
-                              <Button variant="secondary" className="flex-1 rounded-2xl">
-                                Open Project
-                              </Button>
-                              <Button variant="outline" size="icon" className="rounded-2xl">
-                                <Share2 className="h-4 w-4" />
-                              </Button>
-                            </CardFooter>
-                          </Card>
-                        </motion.div>
-                      ))}
-                      <motion.div whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                        <Card className="flex h-full flex-col items-center justify-center rounded-3xl border border-dashed p-8 hover:border-primary/50 transition-all duration-300">
-                          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
-                            <Plus className="h-6 w-6" />
-                          </div>
-                          <h3 className="text-lg font-medium">Create New Project</h3>
-                          <p className="mb-4 text-center text-sm text-muted-foreground">
-                            Start a new creative project from scratch or use a template
-                          </p>
-                          <Button className="rounded-2xl">New Project</Button>
-                        </Card>
-                      </motion.div>
-                    </div>
-                  </section>
-
-                  <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold">Project Templates</h2>
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                      <Card className="overflow-hidden rounded-3xl">
-                        <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 p-6 text-white">
-                          <h3 className="text-lg font-medium">Brand Identity</h3>
-                          <p className="text-sm text-white/80">Complete brand design package</p>
-                        </div>
-                        <CardFooter className="flex justify-between p-4">
-                          <Badge variant="outline" className="rounded-xl">
-                            Popular
-                          </Badge>
-                          <Button variant="ghost" size="sm" className="rounded-xl">
-                            Use Template
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                      <Card className="overflow-hidden rounded-3xl">
-                        <div className="aspect-video bg-gradient-to-br from-amber-500 to-red-600 p-6 text-white">
-                          <h3 className="text-lg font-medium">Marketing Campaign</h3>
-                          <p className="text-sm text-white/80">Multi-channel marketing assets</p>
-                        </div>
-                        <CardFooter className="flex justify-between p-4">
-                          <Badge variant="outline" className="rounded-xl">
-                            New
-                          </Badge>
-                          <Button variant="ghost" size="sm" className="rounded-xl">
-                            Use Template
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                      <Card className="overflow-hidden rounded-3xl">
-                        <div className="aspect-video bg-gradient-to-br from-green-500 to-teal-600 p-6 text-white">
-                          <h3 className="text-lg font-medium">Website Redesign</h3>
-                          <p className="text-sm text-white/80">Complete website design workflow</p>
-                        </div>
-                        <CardFooter className="flex justify-between p-4">
-                          <Badge variant="outline" className="rounded-xl">
-                            Featured
-                          </Badge>
-                          <Button variant="ghost" size="sm" className="rounded-xl">
-                            Use Template
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                      <Card className="overflow-hidden rounded-3xl">
-                        <div className="aspect-video bg-gradient-to-br from-pink-500 to-rose-600 p-6 text-white">
-                          <h3 className="text-lg font-medium">Product Launch</h3>
-                          <p className="text-sm text-white/80">Product launch campaign assets</p>
-                        </div>
-                        <CardFooter className="flex justify-between p-4">
-                          <Badge variant="outline" className="rounded-xl">
-                            Popular
-                          </Badge>
-                          <Button variant="ghost" size="sm" className="rounded-xl">
-                            Use Template
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  </section>
-                </TabsContent>
-
-                <TabsContent value="learn" className="space-y-8 mt-0">
-                  <section>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="overflow-hidden rounded-3xl bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 p-8 text-white"
-                    >
-                      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-                        <div className="space-y-2">
-                          <h2 className="text-3xl font-bold">Learn & Grow</h2>
-                          <p className="max-w-[600px] text-white/80">
-                            Expand your creative skills with tutorials, courses, and resources.
-                          </p>
-                        </div>
-                        <Button className="w-fit rounded-2xl bg-white text-emerald-700 hover:bg-white/90">
-                          <Crown className="mr-2 h-4 w-4" />
-                          Upgrade to Pro
-                        </Button>
-                      </div>
-                    </motion.div>
-                  </section>
-
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <Button variant="outline" className="rounded-2xl">
-                      <Play className="mr-2 h-4 w-4" />
-                      All Tutorials
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Courses
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Lightbulb className="mr-2 h-4 w-4" />
-                      Tips & Tricks
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <TrendingUp className="mr-2 h-4 w-4" />
-                      Trending
-                    </Button>
-                    <Button variant="outline" className="rounded-2xl">
-                      <Bookmark className="mr-2 h-4 w-4" />
-                      Saved
-                    </Button>
-                    <div className="flex-1"></div>
-                    <div className="relative w-full md:w-auto mt-3 md:mt-0">
-                      <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        type="search"
-                        placeholder="Search tutorials..."
-                        className="w-full rounded-2xl pl-9 md:w-[200px]"
-                      />
-                    </div>
-                  </div>
-
-                  <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold">Featured Tutorials</h2>
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                      {tutorials.slice(0, 3).map((tutorial) => (
-                        <motion.div key={tutorial.title} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                          <Card className="overflow-hidden rounded-3xl">
-                            <div className="aspect-video overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 relative">
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Button size="icon" variant="secondary" className="h-14 w-14 rounded-full">
-                                  <Play className="h-6 w-6" />
-                                </Button>
-                              </div>
-                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 text-white">
-                                <Badge className="bg-white/20 text-white hover:bg-white/30 rounded-xl">
-                                  {tutorial.category}
-                                </Badge>
-                                <h3 className="mt-2 text-lg font-medium">{tutorial.title}</h3>
-                              </div>
-                            </div>
-                            <CardContent className="p-4">
-                              <p className="text-sm text-muted-foreground">{tutorial.description}</p>
-                              <div className="mt-4 flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  <Avatar className="h-6 w-6">
-                                    <AvatarFallback>{tutorial.instructor.charAt(0)}</AvatarFallback>
-                                  </Avatar>
-                                  <span className="text-sm">{tutorial.instructor}</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                  <Clock className="h-4 w-4" />
-                                  {tutorial.duration}
-                                </div>
-                              </div>
-                            </CardContent>
-                            <CardFooter className="flex items-center justify-between border-t p-4">
-                              <Badge variant="outline" className="rounded-xl">
-                                {tutorial.level}
-                              </Badge>
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                <Eye className="h-4 w-4" />
-                                {tutorial.views} views
-                              </div>
-                            </CardFooter>
-                          </Card>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </section>
-
-                  <section className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-2xl font-semibold">Popular Courses</h2>
-                      <Button variant="ghost" className="rounded-2xl">
-                        View All
-                      </Button>
-                    </div>
-                    <div className="rounded-3xl border overflow-hidden">
-                      <div className="divide-y">
-                        {tutorials.slice(3, 5).map((tutorial) => (
-                          <motion.div
-                            key={tutorial.title}
-                            whileHover={{ scale: 1.02, y: -5 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="p-4 flex flex-col md:flex-row gap-3"
-                          >
-                            <div className="flex-shrink-0">
-                              <div className="relative h-20 w-20 overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <Play className="h-8 w-8 text-white" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="font-medium">{tutorial.title}</h3>
-                              <p className="text-sm text-muted-foreground">{tutorial.description}</p>
-                              <div className="mt-2 flex flex-wrap items-center gap-3">
-                                <Badge variant="outline" className="rounded-xl">
-                                  {tutorial.level}
-                                </Badge>
-                                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                  <Clock className="h-3 w-3" />
-                                  {tutorial.duration}
-                                </div>
-                                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                                  <Eye className="h-3 w-3" />
-                                  {tutorial.views} views
-                                </div>
-                              </div>
-                            </div>
-                            <div className="flex items-center">
-                              <Button variant="ghost" size="sm" className="rounded-xl">
-                                Watch Now
-                              </Button>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </section>
-
-                  <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold">Learning Paths</h2>
-                    <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-                      <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
-                        <CardHeader className="pb-2">
-                          <div className="flex items-center justify-between">
-                            <Badge className="rounded-xl bg-blue-500">Beginner</Badge>
-                            <Award className="h-5 w-5 text-amber-500" />
-                          </div>
-                          <CardTitle className="mt-2">UI/UX Design Fundamentals</CardTitle>
-                          <CardDescription>Master the basics of user interface and experience design</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between text-sm">
-                              <span>8 courses • 24 hours</span>
-                              <span>4.8 ★</span>
-                            </div>
-                            <Progress value={30} className="h-2 rounded-xl" />
-                            <p className="text-xs text-muted-foreground">30% completed</p>
-                          </div>
-                        </CardContent>
-                        <CardFooter>
-                          <Button variant="secondary" className="w-full rounded-2xl">
-                            Continue Learning
-                          </Button>
-                        </CardFooter>
-                      </Card>
-
-                      <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
-                        <CardHeader className="pb-2">
-                          <div className="flex items-center justify-between">
-                            <Badge className="rounded-xl bg-amber-500">Intermediate</Badge>
-                            <Award className="h-5 w-5 text-amber-500" />
-                          </div>
-                          <CardTitle className="mt-2">Digital Illustration Mastery</CardTitle>
-                          <CardDescription>Create stunning digital artwork and illustrations</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between text-sm">
-                              <span>12 courses • 36 hours</span>
-                              <span>4.9 ★</span>
-                            </div>
-                            <Progress value={0} className="h-2 rounded-xl" />
-                            <p className="text-xs text-muted-foreground">Not started</p>
-                          </div>
-                        </CardContent>
-                        <CardFooter>
-                          <Button variant="secondary" className="w-full rounded-2xl">
-                            Start Learning
-                          </Button>
-                        </CardFooter>
-                      </Card>
-
-                      <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
-                        <CardHeader className="pb-2">
-                          <div className="flex items-center justify-between">
-                            <Badge className="rounded-xl bg-red-500">Advanced</Badge>
-                            <Award className="h-5 w-5 text-amber-500" />
-                          </div>
-                          <CardTitle className="mt-2">Motion Graphics & Animation</CardTitle>
-                          <CardDescription>Create professional motion graphics and animations</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between text-sm">
-                              <span>10 courses • 30 hours</span>
-                              <span>4.7 ★</span>
-                            </div>
-                            <Progress value={0} className="h-2 rounded-xl" />
-                            <p className="text-xs text-muted-foreground">Not started</p>
-                          </div>
-                        </CardContent>
-                        <CardFooter>
-                          <Button variant="secondary" className="w-full rounded-2xl">
-                            Start Learning
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  </section>
-                </TabsContent>
-              </motion.div>
-            </AnimatePresence>
-          </Tabs>
-        </main>
+                  </TabsContent>
+                </motion.div>
+              </AnimatePresence>
+            </Tabs>
+          </main>
+          <div className="hidden xl:block">
+            <IntelligenceFeed />
+          </div>
+        </div>
+        <Toaster position="top-right" theme="dark" />
       </div>
     </div>
   )
