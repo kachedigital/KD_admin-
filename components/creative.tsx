@@ -781,7 +781,7 @@ export function DesignaliCreative() {
                   </TabsTrigger>
                 </TabsList>
                 <div className="hidden md:flex gap-2">
-                  <Button variant="outline" className="rounded-2xl">
+                  <Button variant="outline" className="rounded-2xl bg-transparent">
                     <Download className="mr-2 h-4 w-4" />
                     Install App
                   </Button>
@@ -806,37 +806,31 @@ export function DesignaliCreative() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="overflow-hidden rounded-3xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 p-8 text-white"
+                        className="overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 p-6 text-white"
                       >
-                        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                          <div className="space-y-4">
-                            <Badge className="bg-primary text-white border-none glow-pink rounded-xl">SYSTEM_ONLINE</Badge>
-                            <h2 className="text-3xl font-bold font-montserrat tracking-tight">Welcome to the Cyber-Fusion Hub</h2>
-                            <p className="max-w-[600px] text-white/80">
+                        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                          <div className="space-y-3">
+                            <Badge className="bg-primary text-white border-none glow-pink rounded-full text-xs">SYSTEM_ONLINE</Badge>
+                            <h2 className="text-2xl font-bold tracking-tight">Welcome to the Cyber-Fusion Hub</h2>
+                            <p className="max-w-[500px] text-sm text-white/80">
                               Unleash your creativity with our comprehensive suite of professional design tools and
                               resources.
                             </p>
-                            <div className="flex flex-wrap gap-4">
-                              <Button className="rounded-2xl bg-primary text-white hover:bg-primary/90 glow-action">
+                            <div className="flex flex-wrap gap-3">
+                              <Button size="sm" className="rounded-full bg-white text-black hover:bg-white/90 font-semibold">
                                 Initialize Sync
                               </Button>
-                              <Button variant="outline" className="rounded-2xl border-accent/30 text-accent hover:bg-accent/10 glow-cyan">
+                              <Button size="sm" variant="outline" className="rounded-full border-white/30 text-white hover:bg-white/10 bg-transparent">
                                 Network Status
                               </Button>
                             </div>
-                            <Button
-                              variant="outline"
-                              className="rounded-2xl bg-transparent border-white text-white hover:bg-white/10"
-                            >
-                              Take a Tour
-                            </Button>
                           </div>
                         </div>
                         <div className="hidden lg:block">
                           <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                            className="relative h-40 w-40"
+                            className="relative h-28 w-28"
                           >
                             <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-md" />
                             <div className="absolute inset-4 rounded-full bg-white/20" />
@@ -862,33 +856,33 @@ export function DesignaliCreative() {
                           .filter((app) => app.recent)
                           .map((app: any) => (
                             <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                              <Card className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-primary/50 transition-all duration-300">
-                                <CardHeader className="pb-2">
+                              <Card gradient="cyan" className="hover:border-[#0CC0DF]/30 transition-all duration-300">
+                                <CardHeader className="pb-2 pt-5">
                                   <div className="flex items-center justify-between">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#290747] border border-white/10 shadow-lg">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-black/40 border border-white/[0.08]">
                                       {app.icon}
                                     </div>
-                                    <Badge variant="outline" className="rounded-xl border-accent/30 text-accent font-mono text-[10px]">
+                                    <Badge variant="outline" className="rounded-full border-[#0CC0DF]/30 text-[#0CC0DF] font-mono text-[10px]">
                                       {app.fileType}
                                     </Badge>
                                   </div>
                                 </CardHeader>
                                 <CardContent className="pb-2">
                                   <div className="flex items-center justify-between mb-1">
-                                    <CardTitle className="text-lg font-montserrat truncate">{app.name}</CardTitle>
-                                    <span className="text-sm font-bold text-primary">{app.price}</span>
+                                    <CardTitle className="text-lg font-semibold truncate text-white">{app.name}</CardTitle>
+                                    <span className="text-sm font-bold text-[#FF24E9]">{app.price}</span>
                                   </div>
-                                  <CardDescription className="line-clamp-2 text-xs mb-3">{app.description}</CardDescription>
+                                  <CardDescription className="line-clamp-2 text-xs mb-3 text-white/60">{app.description}</CardDescription>
                                   <div className="flex flex-wrap gap-1 mt-2">
                                     {app.features?.map((f: string) => (
-                                      <span key={f} className="text-[9px] px-2 py-0.5 bg-white/5 rounded-full border border-white/5 text-white/60">
+                                      <span key={f} className="text-[9px] px-2 py-0.5 bg-black/30 rounded-full border border-white/[0.05] text-white/50">
                                         {f}
                                       </span>
                                     ))}
                                   </div>
                                 </CardContent>
                                 <CardFooter>
-                                  <Button className="w-full rounded-2xl bg-primary hover:bg-primary/90 text-white font-montserrat font-bold glow-action">
+                                  <Button className="w-full rounded-full bg-white hover:bg-white/90 text-black font-semibold">
                                     INITIALIZE
                                   </Button>
                                 </CardFooter>
@@ -906,40 +900,40 @@ export function DesignaliCreative() {
                             View All
                           </Button>
                         </div>
-                        <div className="rounded-3xl border">
-                          <div className="grid grid-cols-1 divide-y">
+                        <Card>
+                          <div className="grid grid-cols-1 divide-y divide-white/[0.05]">
                             {recentFiles.slice(0, 4).map((file) => (
                               <motion.div
                                 key={file.name}
-                                whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+                                whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
                                 className="flex items-center justify-between p-4"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-muted">
+                                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 border border-white/[0.08]">
                                     {file.icon}
                                   </div>
                                   <div>
-                                    <p className="font-medium">{file.name}</p>
-                                    <p className="text-sm text-muted-foreground">
+                                    <p className="font-medium text-white">{file.name}</p>
+                                    <p className="text-sm text-white/50">
                                       {file.app} • {file.modified}
                                     </p>
                                   </div>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   {file.shared && (
-                                    <Badge variant="outline" className="rounded-xl">
+                                    <Badge variant="outline" className="rounded-full border-white/20 text-white/60">
                                       <Users className="mr-1 h-3 w-3" />
                                       {file.collaborators}
                                     </Badge>
                                   )}
-                                  <Button variant="ghost" size="sm" className="rounded-xl">
+                                  <Button variant="ghost" size="sm" className="rounded-full text-white/70 hover:text-white hover:bg-white/10">
                                     Open
                                   </Button>
                                 </div>
                               </motion.div>
                             ))}
                           </div>
-                        </div>
+                        </Card>
                       </section>
 
                       <section className="space-y-4">
@@ -949,29 +943,29 @@ export function DesignaliCreative() {
                             View All
                           </Button>
                         </div>
-                        <div className="rounded-3xl border">
-                          <div className="grid grid-cols-1 divide-y">
+                        <Card>
+                          <div className="grid grid-cols-1 divide-y divide-white/[0.05]">
                             {projects.slice(0, 3).map((project) => (
                               <motion.div
                                 key={project.name}
-                                whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+                                whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
                                 className="p-4"
                               >
                                 <div className="flex items-center justify-between mb-2">
-                                  <h3 className="font-medium">{project.name}</h3>
-                                  <Badge variant="outline" className="rounded-xl">
+                                  <h3 className="font-medium text-white">{project.name}</h3>
+                                  <Badge variant="outline" className="rounded-full border-white/20 text-white/60">
                                     Due {project.dueDate}
                                   </Badge>
                                 </div>
-                                <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
+                                <p className="text-sm text-white/50 mb-3">{project.description}</p>
                                 <div className="space-y-2">
-                                  <div className="flex items-center justify-between text-sm">
+                                  <div className="flex items-center justify-between text-sm text-white/70">
                                     <span>Progress</span>
                                     <span>{project.progress}%</span>
                                   </div>
-                                  <Progress value={project.progress} className="h-2 rounded-xl" />
+                                  <Progress value={project.progress} className="h-2 rounded-full" />
                                 </div>
-                                <div className="flex items-center justify-between mt-3 text-sm text-muted-foreground">
+                                <div className="flex items-center justify-between mt-3 text-sm text-white/50">
                                   <div className="flex items-center">
                                     <Users className="mr-1 h-4 w-4" />
                                     {project.members} members
@@ -984,7 +978,7 @@ export function DesignaliCreative() {
                               </motion.div>
                             ))}
                           </div>
-                        </div>
+                        </Card>
                       </section>
                     </div>
 
@@ -998,8 +992,8 @@ export function DesignaliCreative() {
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                         {communityPosts.map((post) => (
                           <motion.div key={post.title} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                            <Card className="overflow-hidden rounded-3xl">
-                              <div className="aspect-[4/3] overflow-hidden bg-muted">
+                            <Card className="hover:border-white/20 transition-all duration-300">
+                              <div className="aspect-[4/3] overflow-hidden bg-black/40 rounded-t-xl">
                                 <img
                                   src={post.image || "/placeholder.svg"}
                                   alt={post.title}
@@ -1007,16 +1001,16 @@ export function DesignaliCreative() {
                                 />
                               </div>
                               <CardContent className="p-4">
-                                <h3 className="font-semibold">{post.title}</h3>
-                                <p className="text-sm text-muted-foreground">by {post.author}</p>
+                                <h3 className="font-semibold text-white">{post.title}</h3>
+                                <p className="text-sm text-white/50">by {post.author}</p>
                                 <div className="mt-2 flex items-center justify-between text-sm">
-                                  <div className="flex items-center gap-2">
-                                    <Heart className="h-4 w-4 text-red-500" />
+                                  <div className="flex items-center gap-2 text-white/60">
+                                    <Heart className="h-4 w-4 text-[#FF24E9]" />
                                     {post.likes}
-                                    <MessageSquare className="ml-2 h-4 w-4 text-blue-500" />
+                                    <MessageSquare className="ml-2 h-4 w-4 text-[#0CC0DF]" />
                                     {post.comments}
                                   </div>
-                                  <span className="text-muted-foreground">{post.time}</span>
+                                  <span className="text-white/40">{post.time}</span>
                                 </div>
                               </CardContent>
                             </Card>
@@ -1050,19 +1044,19 @@ export function DesignaliCreative() {
                     </section>
 
                     <div className="flex flex-wrap gap-3 mb-6">
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         All Categories
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         Creative
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         Video
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         Web
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         3D
                       </Button>
                       <div className="flex-1"></div>
@@ -1083,28 +1077,28 @@ export function DesignaliCreative() {
                           .filter((app) => app.new)
                           .map((app) => (
                             <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                              <Card className="overflow-hidden rounded-3xl border-2 hover:border-primary/50 transition-all duration-300">
-                                <CardHeader className="pb-2">
+                              <Card gradient="sunset" className="hover:border-[#FF8D55]/30 transition-all duration-300">
+                                <CardHeader className="pb-2 pt-5">
                                   <div className="flex items-center justify-between">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-black/40 border border-white/[0.08]">
                                       {app.icon}
                                     </div>
-                                    <Badge className="rounded-xl bg-amber-500">New</Badge>
+                                    <Badge className="rounded-full bg-[#FF8D55] text-black font-semibold">New</Badge>
                                   </div>
                                 </CardHeader>
                                 <CardContent className="pb-2">
-                                  <CardTitle className="text-lg">{app.name}</CardTitle>
-                                  <CardDescription>{app.description}</CardDescription>
+                                  <CardTitle className="text-lg text-white">{app.name}</CardTitle>
+                                  <CardDescription className="text-white/60">{app.description}</CardDescription>
                                   <div className="mt-2">
-                                    <div className="flex items-center justify-between text-sm">
+                                    <div className="flex items-center justify-between text-sm text-white/70">
                                       <span>Installation</span>
                                       <span>{app.progress}%</span>
                                     </div>
-                                    <Progress value={app.progress} className="h-2 mt-1 rounded-xl" />
+                                    <Progress value={app.progress} className="h-2 mt-1 rounded-full" />
                                   </div>
                                 </CardContent>
                                 <CardFooter>
-                                  <Button variant="secondary" className="w-full rounded-2xl">
+                                  <Button className="w-full rounded-full bg-white hover:bg-white/90 text-black font-semibold">
                                     {app.progress < 100 ? "Continue Install" : "Open"}
                                   </Button>
                                 </CardFooter>
@@ -1119,26 +1113,26 @@ export function DesignaliCreative() {
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {apps.map((app) => (
                           <motion.div key={app.name} whileHover={{ scale: 1.02, y: -5 }} whileTap={{ scale: 0.98 }}>
-                            <Card className="overflow-hidden rounded-3xl border hover:border-primary/50 transition-all duration-300">
-                              <CardHeader className="pb-2">
+                            <Card className="hover:border-[#0CC0DF]/30 transition-all duration-300">
+                              <CardHeader className="pb-2 pt-5">
                                 <div className="flex items-center justify-between">
-                                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
+                                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-black/40 border border-white/[0.08]">
                                     {app.icon}
                                   </div>
-                                  <Badge variant="outline" className="rounded-xl">
+                                  <Badge variant="outline" className="rounded-full border-white/20 text-white/60">
                                     {app.category}
                                   </Badge>
                                 </div>
                               </CardHeader>
                               <CardContent className="pb-2">
-                                <CardTitle className="text-lg">{app.name}</CardTitle>
-                                <CardDescription>{app.description}</CardDescription>
+                                <CardTitle className="text-lg text-white">{app.name}</CardTitle>
+                                <CardDescription className="text-white/60">{app.description}</CardDescription>
                               </CardContent>
                               <CardFooter className="flex gap-2">
-                                <Button variant="secondary" className="flex-1 rounded-2xl">
+                                <Button className="flex-1 rounded-full bg-white hover:bg-white/90 text-black font-semibold">
                                   {app.progress < 100 ? "Install" : "Open"}
                                 </Button>
-                                <Button variant="outline" size="icon" className="rounded-2xl">
+                                <Button variant="outline" size="icon" className="rounded-full bg-transparent border-white/20 text-white/60 hover:text-white hover:border-white/40">
                                   <Star className="h-4 w-4" />
                                 </Button>
                               </CardFooter>
@@ -1179,23 +1173,23 @@ export function DesignaliCreative() {
                     </section>
 
                     <div className="flex flex-wrap gap-3 mb-6">
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <FileText className="mr-2 h-4 w-4" />
                         All Files
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Clock className="mr-2 h-4 w-4" />
                         Recent
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Users className="mr-2 h-4 w-4" />
                         Shared
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Star className="mr-2 h-4 w-4" />
                         Favorites
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Trash className="mr-2 h-4 w-4" />
                         Trash
                       </Button>
@@ -1214,54 +1208,54 @@ export function DesignaliCreative() {
                       <div className="flex items-center justify-between">
                         <h2 className="text-2xl font-semibold">All Files</h2>
                         <div className="flex gap-2">
-                          <Button variant="outline" size="sm" className="rounded-2xl">
+                          <Button variant="outline" size="sm" className="rounded-2xl bg-transparent">
                             <PanelLeft className="mr-2 h-4 w-4" />
                             Filter
                           </Button>
-                          <Button variant="outline" size="sm" className="rounded-2xl">
+                          <Button variant="outline" size="sm" className="rounded-2xl bg-transparent">
                             <ArrowUpDown className="mr-2 h-4 w-4" />
                             Sort
                           </Button>
                         </div>
                       </div>
 
-                      <div className="rounded-3xl border overflow-hidden">
-                        <div className="bg-muted/50 p-3 hidden md:grid md:grid-cols-12 text-sm font-medium">
+                      <Card className="overflow-hidden">
+                        <div className="bg-black/40 p-3 hidden md:grid md:grid-cols-12 text-sm font-medium text-white/70">
                           <div className="col-span-6">Name</div>
                           <div className="col-span-2">App</div>
                           <div className="col-span-2">Size</div>
                           <div className="col-span-2">Modified</div>
                         </div>
-                        <div className="divide-y">
+                        <div className="divide-y divide-white/[0.05]">
                           {recentFiles.map((file) => (
                             <motion.div
                               key={file.name}
-                              whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+                              whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
                               className="p-3 md:grid md:grid-cols-12 items-center flex flex-col md:flex-row gap-3 md:gap-0"
                             >
                               <div className="col-span-6 flex items-center gap-3 w-full md:w-auto">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-muted">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 border border-white/[0.08]">
                                   {file.icon}
                                 </div>
                                 <div>
-                                  <p className="font-medium">{file.name}</p>
+                                  <p className="font-medium text-white">{file.name}</p>
                                   {file.shared && (
-                                    <div className="flex items-center text-xs text-muted-foreground">
+                                    <div className="flex items-center text-xs text-white/50">
                                       <Users className="mr-1 h-3 w-3" />
                                       Shared with {file.collaborators} people
                                     </div>
                                   )}
                                 </div>
                               </div>
-                              <div className="col-span-2 text-sm md:text-base">{file.app}</div>
-                              <div className="col-span-2 text-sm md:text-base">{file.size}</div>
+                              <div className="col-span-2 text-sm md:text-base text-white/70">{file.app}</div>
+                              <div className="col-span-2 text-sm md:text-base text-white/70">{file.size}</div>
                               <div className="col-span-2 flex items-center justify-between w-full md:w-auto">
-                                <span className="text-sm md:text-base">{file.modified}</span>
+                                <span className="text-sm md:text-base text-white/70">{file.modified}</span>
                                 <div className="flex gap-1">
-                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-xl">
+                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-white/60 hover:text-white hover:bg-white/10">
                                     <Share2 className="h-4 w-4" />
                                   </Button>
-                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-xl">
+                                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-white/60 hover:text-white hover:bg-white/10">
                                     <MoreHorizontal className="h-4 w-4" />
                                   </Button>
                                 </div>
@@ -1269,7 +1263,7 @@ export function DesignaliCreative() {
                             </motion.div>
                           ))}
                         </div>
-                      </div>
+                      </Card>
                     </section>
                   </TabsContent>
 
@@ -1297,19 +1291,19 @@ export function DesignaliCreative() {
                     </section>
 
                     <div className="flex flex-wrap gap-3 mb-6">
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Layers className="mr-2 h-4 w-4" />
                         All Projects
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Clock className="mr-2 h-4 w-4" />
                         Recent
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Users className="mr-2 h-4 w-4" />
                         Shared
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Archive className="mr-2 h-4 w-4" />
                         Archived
                       </Button>
@@ -1362,7 +1356,7 @@ export function DesignaliCreative() {
                                 <Button variant="secondary" className="flex-1 rounded-2xl">
                                   Open Project
                                 </Button>
-                                <Button variant="outline" size="icon" className="rounded-2xl">
+                                <Button variant="outline" size="icon" className="rounded-2xl bg-transparent">
                                   <Share2 className="h-4 w-4" />
                                 </Button>
                               </CardFooter>
@@ -1471,23 +1465,23 @@ export function DesignaliCreative() {
                     </section>
 
                     <div className="flex flex-wrap gap-3 mb-6">
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Play className="mr-2 h-4 w-4" />
                         All Tutorials
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <BookOpen className="mr-2 h-4 w-4" />
                         Courses
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Lightbulb className="mr-2 h-4 w-4" />
                         Tips & Tricks
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <TrendingUp className="mr-2 h-4 w-4" />
                         Trending
                       </Button>
-                      <Button variant="outline" className="rounded-2xl">
+                      <Button variant="outline" className="rounded-2xl bg-transparent">
                         <Bookmark className="mr-2 h-4 w-4" />
                         Saved
                       </Button>

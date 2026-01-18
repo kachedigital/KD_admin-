@@ -56,36 +56,36 @@ export function IntelligenceFeed() {
     }, [])
 
     return (
-        <div className="w-80 h-full border-r border-white/10 bg-[#290747]/50 backdrop-blur-md flex flex-col">
-            <div className="p-4 border-b border-white/10 flex items-center justify-between">
-                <h3 className="font-montserrat font-bold text-sm tracking-widest uppercase flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-accent" />
+        <div className="w-80 h-full border-r border-white/[0.08] bg-[#1E1E1F] flex flex-col">
+            <div className="p-4 border-b border-white/[0.08] flex items-center justify-between">
+                <h3 className="font-semibold text-sm tracking-wide uppercase flex items-center gap-2 text-white">
+                    <Activity className="w-4 h-4 text-[#0CC0DF]" />
                     Intelligence Feed
                 </h3>
-                <Badge variant="outline" className="text-[10px] border-accent/30 text-accent">
+                <Badge variant="outline" className="text-[10px] border-[#0CC0DF]/30 text-[#0CC0DF] rounded-full">
                     REAL-TIME
                 </Badge>
             </div>
 
             <ScrollArea className="flex-1 p-4">
-                <div className="space-y-4">
+                <div className="space-y-3">
                     {logs.length === 0 && (
-                        <div className="text-white/30 text-xs italic text-center py-10">
+                        <div className="text-white/40 text-xs italic text-center py-10">
                             Awaiting signal...
                         </div>
                     )}
                     {logs.map((log) => (
-                        <div key={log.id} className="p-3 bg-white/5 rounded-lg border border-white/5 hover:border-white/10 transition-colors group">
+                        <div key={log.id} className="p-3 bg-black/30 rounded-xl border border-white/[0.05] hover:border-white/[0.1] transition-colors group">
                             <div className="flex items-center justify-between mb-2">
-                                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${log.agent_role === 'Founder' ? 'bg-primary/20 text-primary' : 'bg-accent/20 text-accent'
+                                <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${log.agent_role === 'Founder' ? 'bg-[#FF24E9]/20 text-[#FF24E9]' : 'bg-[#0CC0DF]/20 text-[#0CC0DF]'
                                     }`}>
                                     {log.agent_role?.toUpperCase()}
                                 </span>
-                                <span className="text-[9px] text-white/30">
+                                <span className="text-[9px] text-white/40">
                                     {new Date(log.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                                 </span>
                             </div>
-                            <p className="text-xs text-white/80 leading-relaxed font-poppins">
+                            <p className="text-xs text-white/70 leading-relaxed">
                                 {log.log_message}
                             </p>
                         </div>
@@ -93,7 +93,7 @@ export function IntelligenceFeed() {
                 </div>
             </ScrollArea>
 
-            <div className="p-3 border-t border-white/10 bg-black/20">
+            <div className="p-3 border-t border-white/[0.08] bg-black/20">
                 <div className="flex items-center gap-2 text-[10px] text-white/40">
                     <Terminal className="w-3 h-3" />
                     <span>SYSTEM_STATUS: ACTIVE</span>

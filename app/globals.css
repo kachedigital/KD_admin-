@@ -4,26 +4,71 @@
 
 @layer base {
   :root {
-    --background: 272 82% 15%;
+    /* Kache Digital Brand Kit - Pure Black Theme */
+    /* Background: Pure Black #000000 */
+    --background: 0 0% 0%;
     --foreground: 0 0% 100%;
-    --card: 272 82% 15%;
+    
+    /* Card: Dark Gray #1E1E1F - matching screenshots */
+    --card: 240 2% 12%;
     --card-foreground: 0 0% 100%;
-    --popover: 272 82% 15%;
+    
+    --popover: 0 0% 0%;
     --popover-foreground: 0 0% 100%;
-    --primary: 306 100% 57%;
+    
+    /* Primary: Magenta #FF24E9 - for badges, prices, accents */
+    --primary: 307 100% 57%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 189 90% 46%;
-    --secondary-foreground: 272 82% 15%;
-    --muted: 272 82% 20%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 189 90% 46%;
-    --accent-foreground: 189 90% 46%;
-    --destructive: 0 84.2% 60.2%;
+    
+    /* Secondary: Cyan #0CC0DF - for links, labels, chart bars */
+    --secondary: 189 87% 46%;
+    --secondary-foreground: 0 0% 0%;
+    
+    /* Muted: Gray for subtle text */
+    --muted: 240 2% 18%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Accent: Cyan for interactive elements */
+    --accent: 189 87% 46%;
+    --accent-foreground: 0 0% 0%;
+    
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 306 100% 57% / 0.2;
-    --input: 306 100% 57% / 0.2;
-    --ring: 306 100% 57%;
-    --radius: 0.5rem;
+    
+    /* Border: Very subtle gray borders */
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 189 87% 46%;
+    --radius: 0.75rem;
+    
+    /* Chart colors from brand kit */
+    --chart-1: 189 87% 46%;  /* #0CC0DF Cyan - primary chart */
+    --chart-2: 307 100% 57%; /* #FF24E9 Magenta */
+    --chart-3: 20 100% 67%;  /* #FF8D55 Orange */
+    --chart-4: 275 68% 47%;  /* #9F36BD Purple */
+    --chart-5: 263 69% 51%;  /* #6B2BD8 Violet */
+    
+    /* Sidebar - Pure black */
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 189 87% 46%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 240 2% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 189 87% 46%;
+    
+    /* Brand-specific custom properties */
+    --kd-black: 0 0% 0%;            /* #000000 */
+    --kd-card: 240 2% 12%;          /* #1E1E1F */
+    --kd-cyan: 189 87% 46%;         /* #0CC0DF */
+    --kd-magenta: 307 100% 57%;     /* #FF24E9 */
+    --kd-purple: 275 68% 47%;       /* #9F36BD */
+    --kd-violet: 263 69% 51%;       /* #6B2BD8 */
+    --kd-orange: 20 100% 67%;       /* #FF8D55 */
+    --kd-light-cyan: 182 76% 63%;   /* #5CE1E6 */
+    --kd-teal: 189 71% 38%;         /* #1D90A5 */
+    --kd-green: 142 76% 45%;        /* #22C55E - for positive indicators */
   }
 }
 
@@ -32,8 +77,8 @@
     @apply border-border;
   }
   body {
-    /* Removed @apply font-poppins - fonts applied via layout.tsx */
     @apply bg-background text-foreground;
+    font-family: var(--font-poppins), sans-serif;
   }
   h1,
   h2,
@@ -41,22 +86,92 @@
   h4,
   h5,
   h6 {
-    /* Use CSS variable directly instead of @apply */
     font-family: var(--font-montserrat), sans-serif;
   }
 }
 
 @layer utilities {
-  .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  /* Dark card matching screenshots - #1E1E1F */
+  .kd-card {
+    background: #1E1E1F;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
   }
 
+  /* Feature cards with gradient top borders */
+  .kd-card-cyan {
+    background: #1E1E1F;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kd-card-cyan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0CC0DF 0%, #1D90A5 100%);
+  }
+
+  .kd-card-sunset {
+    background: #1E1E1F;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kd-card-sunset::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF8D55 0%, #FF24E9 100%);
+  }
+
+  .kd-card-purple {
+    background: #1E1E1F;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kd-card-purple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #9F36BD 0%, #FF24E9 100%);
+  }
+
+  /* Glass card for overlays */
+  .glass-card {
+    @apply backdrop-blur-md;
+    background: rgba(30, 30, 31, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Brand glow effects - subtle for dark theme */
   .glow-pink {
-    box-shadow: 0 0 15px rgba(255, 36, 233, 0.4);
+    box-shadow: 0 0 20px rgba(255, 36, 233, 0.3);
   }
 
   .glow-cyan {
-    box-shadow: 0 0 15px rgba(12, 192, 223, 0.4);
+    box-shadow: 0 0 20px rgba(12, 192, 223, 0.3);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(255, 141, 85, 0.3);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(159, 54, 189, 0.3);
   }
 
   .glow-action {
@@ -64,24 +179,191 @@
   }
 
   .glow-action:hover {
-    box-shadow: 0 0 20px rgba(255, 36, 233, 0.6), 0 0 30px rgba(12, 192, 223, 0.4);
+    box-shadow: 0 0 25px rgba(12, 192, 223, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Brand gradients */
+  .gradient-kd-cyan {
+    background: linear-gradient(90deg, #0CC0DF 0%, #1D90A5 100%);
+  }
+
+  .gradient-kd-sunset {
+    background: linear-gradient(90deg, #FF8D55 0%, #FF24E9 100%);
+  }
+
+  .gradient-kd-purple {
+    background: linear-gradient(90deg, #9F36BD 0%, #FF24E9 100%);
+  }
+
+  .gradient-kd-fuchsia-cyan {
+    background: linear-gradient(90deg, #FF24E9 0%, #6B2BD8 50%, #0CC0DF 100%);
+  }
+
+  .gradient-kd-vibrant {
+    background: linear-gradient(135deg, #6B2BD8 0%, #FF24E9 50%, #FF8D55 100%);
+  }
+
+  /* Text colors matching screenshots */
+  .text-kd-cyan {
+    color: #0CC0DF;
+  }
+
+  .text-kd-magenta {
+    color: #FF24E9;
+  }
+
+  .text-kd-muted {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Text gradients */
+  .text-gradient-kd {
+    background: linear-gradient(90deg, #0CC0DF 0%, #FF24E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Chromatic aberration effect - matching hero text in screenshots */
+  .chromatic-aberration {
+    text-shadow: 2px 0 0 rgba(255, 36, 233, 0.6), -2px 0 0 rgba(12, 192, 223, 0.6);
+  }
+
+  /* Badge styles matching screenshots */
+  .kd-badge {
+    background: #FF24E9;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .kd-badge-outline {
+    background: transparent;
+    color: #0CC0DF;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #0CC0DF;
+  }
+
+  /* Button styles matching screenshots */
+  .kd-btn-primary {
+    background: white;
+    color: black;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.2s;
+  }
+  .kd-btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
     transform: translateY(-1px);
   }
 
-  .chromatic-aberration {
-    text-shadow: 2px 0 0 rgba(255, 36, 233, 0.5), -2px 0 0 rgba(12, 192, 223, 0.5);
-    animation: aberration 3s infinite;
+  .kd-btn-outline {
+    background: transparent;
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s;
+  }
+  .kd-btn-outline:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
   }
 
-  @keyframes aberration {
-    0% {
-      text-shadow: 1px 0 0 rgba(255, 36, 233, 0.5), -1px 0 0 rgba(12, 192, 223, 0.5);
-    }
-    50% {
-      text-shadow: -1px 0 0 rgba(255, 36, 233, 0.5), 1px 0 0 rgba(12, 192, 223, 0.5);
-    }
-    100% {
-      text-shadow: 1px 0 0 rgba(255, 36, 233, 0.5), -1px 0 0 rgba(12, 192, 223, 0.5);
-    }
+  /* Announcement banner style */
+  .kd-announcement {
+    background: transparent;
+    color: #0CC0DF;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid #0CC0DF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Section header styles */
+  .kd-section-label {
+    color: #0CC0DF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Price text */
+  .kd-price {
+    color: #FF24E9;
+    font-weight: 700;
+  }
+
+  /* Status indicator */
+  .kd-status-online {
+    color: #22C55E;
+  }
+
+  .kd-status-standby {
+    color: #0CC0DF;
+  }
+
+  /* Input styles for dark theme */
+  .kd-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    color: white;
+    padding: 0.5rem 1rem;
+  }
+  .kd-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .kd-input:focus {
+    outline: none;
+    border-color: rgba(12, 192, 223, 0.5);
+    box-shadow: 0 0 0 2px rgba(12, 192, 223, 0.1);
+  }
+
+  /* Sidebar navigation item */
+  .kd-nav-item {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+  }
+  .kd-nav-item:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .kd-nav-item.active {
+    color: #0CC0DF;
+    background: rgba(12, 192, 223, 0.1);
+  }
+
+  /* Social icon button */
+  .kd-social-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 36, 233, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s;
+  }
+  .kd-social-icon:hover {
+    border-color: #FF24E9;
+    color: #FF24E9;
   }
 }

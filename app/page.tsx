@@ -2,16 +2,10 @@
 
 import { DesignaliCreative } from "@/components/creative" 
 
- 
 export default function Home() {
-   
   return (
-     
-      <main className="overflow-hidden">  
-        
-          <DesignaliCreative />
-  
-      </main>
-     
+    <main className="min-h-screen bg-black text-white overflow-hidden">  
+      <DesignaliCreative />
+    </main>
   )
 }

@@ -40,10 +40,10 @@ export function FoundersDesk() {
     }
 
     return (
-        <Card className="glass-card border-primary/20 bg-primary/5">
-            <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-montserrat tracking-tighter flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-primary animate-pulse" />
+        <Card gradient="magenta">
+            <CardHeader className="pb-3 pt-5">
+                <CardTitle className="text-sm font-semibold tracking-wide flex items-center gap-2 text-white">
+                    <Zap className="w-4 h-4 text-[#FF24E9] animate-pulse" />
                     FOUNDER'S DESK
                 </CardTitle>
             </CardHeader>
@@ -51,14 +51,14 @@ export function FoundersDesk() {
                 <div className="space-y-4">
                     <Textarea
                         placeholder="Enter Executive Intent..."
-                        className="bg-black/20 border-white/10 text-white placeholder:text-white/20 min-h-[100px] font-poppins text-sm focus:border-primary/50 transition-colors"
+                        className="bg-black/30 border-white/10 text-white placeholder:text-white/30 min-h-[100px] text-sm focus:border-[#0CC0DF]/50 transition-colors rounded-lg"
                         value={intent}
                         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setIntent(e.target.value)}
                     />
                     <Button
                         onClick={handleSendIntent}
                         disabled={isSending || !intent.trim()}
-                        className="w-full bg-primary hover:bg-primary/80 text-white font-montserrat font-bold glow-action"
+                        className="w-full bg-white hover:bg-white/90 text-black font-semibold rounded-full"
                     >
                         {isSending ? "SYNCING..." : "BROADCAST INTENT"}
                         <Send className="w-4 h-4 ml-2" />
