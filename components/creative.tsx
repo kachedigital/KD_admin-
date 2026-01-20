@@ -58,8 +58,10 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { IntelligenceFeed } from "./IntelligenceFeed"
-import { FoundersDesk } from "./FoundersDesk"
+import IntelligenceFeed from "./IntelligenceFeed"
+import ExecutiveDirective from "./ExecutiveDirective"
+import MissionBriefingHero from "./MissionBriefingHero"
+import ProjectHero from "./ProjectHero"
 import { Toaster } from "sonner"
 
 // Sample data for apps
@@ -502,8 +504,8 @@ export function DesignaliCreative() {
         <div className="flex h-full flex-col border-r">
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center gap-3">
-              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FF24E9] to-[#0CC0DF] text-white">
-                <Wand2 className="size-5" />
+              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl overflow-hidden">
+                <img src="/KD_brandkit/KD_logo.png" className="w-full h-full object-contain" alt="Kache Digital Logo" />
               </div>
               <div>
                 <h2 className="font-montserrat font-bold tracking-tighter chromatic-aberration">KACHE DIGITAL</h2>
@@ -608,8 +610,8 @@ export function DesignaliCreative() {
         <div className="flex h-full flex-col">
           <div className="p-4">
             <div className="flex items-center gap-3">
-              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FF24E9] to-[#0CC0DF] text-white">
-                <Wand2 className="size-5" />
+              <div className="flex aspect-square size-10 items-center justify-center rounded-2xl overflow-hidden">
+                <img src="/KD_brandkit/KD_logo.png" className="w-full h-full object-contain" alt="Kache Digital Logo" />
               </div>
               <div>
                 <h2 className="font-montserrat font-bold tracking-tighter chromatic-aberration">KACHE DIGITAL</h2>
@@ -801,48 +803,10 @@ export function DesignaliCreative() {
                   transition={{ duration: 0.2 }}
                 >
                   <TabsContent value="home" className="space-y-8 mt-0">
-                    <section>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 p-6 text-white"
-                      >
-                        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                          <div className="space-y-3">
-                            <Badge className="bg-primary text-white border-none glow-pink rounded-full text-xs">SYSTEM_ONLINE</Badge>
-                            <h2 className="text-2xl font-bold tracking-tight">Welcome to the Cyber-Fusion Hub</h2>
-                            <p className="max-w-[500px] text-sm text-white/80">
-                              Unleash your creativity with our comprehensive suite of professional design tools and
-                              resources.
-                            </p>
-                            <div className="flex flex-wrap gap-3">
-                              <Button size="sm" className="rounded-full bg-white text-black hover:bg-white/90 font-semibold">
-                                Initialize Sync
-                              </Button>
-                              <Button size="sm" variant="outline" className="rounded-full border-white/30 text-white hover:bg-white/10 bg-transparent">
-                                Network Status
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="hidden lg:block">
-                          <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                            className="relative h-28 w-28"
-                          >
-                            <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-md" />
-                            <div className="absolute inset-4 rounded-full bg-white/20" />
-                            <div className="absolute inset-8 rounded-full bg-white/30" />
-                            <div className="absolute inset-12 rounded-full bg-white/40" />
-                            <div className="absolute inset-16 rounded-full bg-white/50" />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    </section>
+                    <MissionBriefingHero />
+                    <ProjectHero />
 
-                    <FoundersDesk />
+                    <ExecutiveDirective />
 
                     <section className="space-y-4">
                       <div className="flex items-center justify-between">

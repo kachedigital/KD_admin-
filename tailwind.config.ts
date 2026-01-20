@@ -15,6 +15,7 @@ const config: Config = {
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
+        monument: ["Monument Extended", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -67,6 +68,10 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "kache-pink": "#FF24E9",
+        "kache-cyan": "#0CC0DF",
+        "kache-coral": "#FF8D55",
+        "kache-foundation": "#1E1E1F",
       },
       borderRadius: {
         lg: "var(--radius)",
