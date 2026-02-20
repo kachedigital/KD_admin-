@@ -16,6 +16,7 @@ const config: Config = {
         poppins: ["var(--font-poppins)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
         monument: ["Monument Extended", "sans-serif"],
+        nunito: ["var(--font-nunito)", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -79,6 +80,16 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "shutter-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        "acclimatize": {
+          "0%": { opacity: "0" },
+          "10%": { opacity: "0.8" },
+          "85%": { opacity: "0.8" },
+          "100%": { opacity: "1" },
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -97,6 +108,8 @@ const config: Config = {
         },
       },
       animation: {
+        "shutter-out": "shutter-out 0.4s ease-out forwards",
+        "acclimatize": "acclimatize 2.5s ease-in-out forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

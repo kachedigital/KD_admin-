@@ -8,19 +8,33 @@ import { cn } from '@/lib/utils'
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => (
-  <ScrollAreaPrimitive.Root
-    ref={ref}
-    className={cn('relative overflow-hidden', className)}
-    {...props}
-  >
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
-      {children}
-    </ScrollAreaPrimitive.Viewport>
-    <ScrollBar />
-    <ScrollAreaPrimitive.Corner />
-  </ScrollAreaPrimitive.Root>
-))
+>(({ className, children, ...props }, ref) => {
+  const [isScrolling, setIsScrolling] = React.useState(false);
+  const scrollTimeout = React.useRef<NodeJS.Timeout | undefined>(undefined);
+
+  const handleScroll = () => {
+    setIsScrolling(true);
+    clearTimeout(scrollTimeout.current);
+    scrollTimeout.current = setTimeout(() => setIsScrolling(false), 150);
+  };
+
+  return (
+    <ScrollAreaPrimitive.Root
+      ref={ref}
+      className={cn('relative overflow-hidden', className)}
+      {...props}
+    >
+      <ScrollAreaPrimitive.Viewport
+        onScroll={handleScroll}
+        className={cn("h-full w-full rounded-[inherit] custom-scrollbar", isScrolling ? "scrollbar-active" : "")}
+      >
+        {children}
+      </ScrollAreaPrimitive.Viewport>
+      <ScrollBar className={isScrolling ? "bg-[var(--glow-color,rgba(255,255,255,0.2))] bg-opacity-70" : "bg-transparent"} />
+      <ScrollAreaPrimitive.Corner />
+    </ScrollAreaPrimitive.Root>
+  );
+})
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
 
 const ScrollBar = React.forwardRef<
@@ -33,9 +47,9 @@ const ScrollBar = React.forwardRef<
     className={cn(
       'flex touch-none select-none transition-colors',
       orientation === 'vertical' &&
-        'h-full w-2.5 border-l border-l-transparent p-[1px]',
+      'h-full w-2.5 border-l border-l-transparent p-[1px]',
       orientation === 'horizontal' &&
-        'h-2.5 flex-col border-t border-t-transparent p-[1px]',
+      'h-2.5 flex-col border-t border-t-transparent p-[1px]',
       className,
     )}
     {...props}

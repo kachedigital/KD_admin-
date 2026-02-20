@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
 import Stripe from 'stripe';
+import { createClient } from "@supabase/supabase-js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+// Initialize securely and bypass Next.js build-time static data collection errors
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'placeholder-key';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+const stripeSecret = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
+const stripe = new Stripe(stripeSecret, {
     apiVersion: '2025-10-27' as any, // Typed as any to bypass potential version mismatch in types
 });
 

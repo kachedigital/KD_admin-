@@ -73,9 +73,12 @@ export default function ProjectPage() {
     }, [projectName]);
 
     return (
-        <div className="flex h-screen bg-[#05010a] text-white overflow-hidden">
+        <>
             <Sidebar />
-            <main className="flex-1 flex flex-col overflow-hidden">
+            <main
+                className="flex-1 flex flex-col h-screen overflow-hidden transition-[padding] duration-300"
+                style={{ paddingLeft: 'var(--sidebar-width)' }}
+            >
                 <Header title={`PROJECT: ${projectName.toUpperCase()}`} />
 
                 <div className="flex-1 overflow-y-auto p-8 space-y-12 custom-scrollbar">
@@ -173,6 +176,6 @@ export default function ProjectPage() {
                     </div>
                 </div>
             </main>
-        </div>
+        </>
     );
 }

@@ -108,7 +108,7 @@ export default function IntelligenceFeed() {
                                             {new Date(log.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                                         </span>
                                     </div>
-                                    <p className="text-xs text-white/70 leading-relaxed font-mono">
+                                    <p className="text-sm text-white/90 leading-relaxed font-nunito">
                                         {log.log_message ||
                                             log.content?.summary ||
                                             (log.content?.target ? `Order to ${log.content.target}: ${log.content.message}` : null) ||

@@ -481,4 +481,52 @@
     border-color: #FF24E9;
     color: #FF24E9;
   }
+
+  /* Thin scrollbar w-1 and Neon Glow track */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--glow-color, #0CC0DF) 20%, transparent);
+    border-radius: 9999px;
+  }
+
+  /* Mobile-optimized 'Vacuum' effect */
+  @media (max-width: 768px) {
+    .panic-exit {
+      filter: blur(4px);
+      opacity: 0;
+      transition: filter 150ms ease-in, opacity 150ms ease-in;
+    }
+  }
+
+  /* The Sanctuary Pause - Hardware Silence */
+  .system-paused *,
+  .system-paused *::before,
+  .system-paused *::after {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
+
+  /* Smooth Acceleration */
+  .system-waking *,
+  .system-waking *::before,
+  .system-waking *::after {
+    animation-play-state: running !important;
+    transition: all 500ms ease-out !important;
+  }
+
+  /* The Containment Firewall */
+  .sanctuary-container {
+    contain: strict;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background-color: #050505;
+  }
 }
